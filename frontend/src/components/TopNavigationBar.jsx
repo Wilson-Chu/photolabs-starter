@@ -1,5 +1,5 @@
 import React from "react";
-import TopicList from "components/TopicList";
+import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
 import "../styles/TopNavigationBar.scss";
 
