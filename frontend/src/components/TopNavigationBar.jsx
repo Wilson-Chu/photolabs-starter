@@ -3,12 +3,14 @@ import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
 import "../styles/TopNavigationBar.scss";
 
-const TopNavigation = () => {
+const TopNavigation = (props) => {
+  const { likes, onChange } = { ...props };
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList />
-      <FavBadge isFavPhotoExist />
+      <FavBadge isFavPhotoExist displayAlert={likes} onChange={onChange} />
     </div>
   );
 };

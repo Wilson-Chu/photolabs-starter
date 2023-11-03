@@ -5,6 +5,7 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   const sampleDataForPhotoList = photos;
+  const { likes, onChange } = props;
 
   const listOfPhotos = sampleDataForPhotoList.map((item) => {
     return (
@@ -14,6 +15,8 @@ const PhotoList = (props) => {
         imageSource={item.urls.regular}
         name={item.user.name}
         profile={item.user.profile}
+        likes={likes}
+        onChange={onChange}
       />
     );
   });
