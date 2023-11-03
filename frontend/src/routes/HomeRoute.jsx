@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import PhotoList from "../components/PhotoList";
+import TopNavigationBar from "../components/TopNavigationBar";
+import "../styles/HomeRoute.scss";
 
-import '../styles/HomeRoute.scss';
+const HomeRoute = (props) => {
+  const { likes, onChange } = props;
 
-const HomeRoute = () => {
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigationBar likes={likes} onChange={onChange} />
+      <PhotoList likes={likes} onChange={onChange} />
     </div>
   );
 };

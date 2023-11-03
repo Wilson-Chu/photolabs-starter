@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.scss";
-import HomeRoute from "components/HomeRoute";
+import HomeRoute from "routes/HomeRoute";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const App = () => {
   const [likes, setLikes] = useState(0);
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute likes={likes} onChange={updateLikes} />
+      {/* <PhotoDetailsModal /> */}
     </div>
   );
 };
