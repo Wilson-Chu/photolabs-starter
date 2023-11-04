@@ -12,7 +12,7 @@ const PhotoDetailsModal = ({ photo, onClose }) => {
       <button className="photo-details-modal__close-button" onClick={onClose}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      {/* Render the photo details using the 'photo' data */}
+      {/* modal content here */}
     </div>
   );
 };
