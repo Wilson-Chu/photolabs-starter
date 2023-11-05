@@ -7,6 +7,7 @@ import photos from "mocks/photos";
 const App = () => {
   const [likes, setLikes] = useState(0);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [photoIndex, setPhotoIndex] = useState(null);
 
   const updateLikes = (likes, likesExist) => {
     likesExist ? setLikes(++likes) : setLikes(--likes);
@@ -27,6 +28,7 @@ const App = () => {
         likes={likes}
         onChange={updateLikes}
         onPhotoClick={handlePhotoClick}
+        photoIndex={photoIndex}
       />
       {selectedPhoto && (
         <PhotoDetailsModal photo={selectedPhoto} onClose={closeModal} />

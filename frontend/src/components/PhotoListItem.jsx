@@ -12,6 +12,7 @@ const PhotoListItem = (props) => {
     likes,
     onChange,
     onClick,
+    photoIndex
   } = props;
 
   const handleItemClick = () => {

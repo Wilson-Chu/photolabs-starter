@@ -4,7 +4,7 @@ import TopNavigationBar from "../components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
-  const { photos, likes, onChange, onPhotoClick } = props;
+  const { photos, likes, onChange, onPhotoClick, photoIndex } = props;
 
   return (
     <div className="home-route">
@@ -14,6 +14,7 @@ const HomeRoute = (props) => {
         likes={likes}
         onChange={onChange}
         onPhotoClick={onPhotoClick}
+        photoIndex = {photoIndex}
       />
     </div>
   );

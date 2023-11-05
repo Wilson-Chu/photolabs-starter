@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 
 // photos is an array of photo objects: [{},{},...]
 const PhotoList = (props) => {
-  const { photos, likes, onChange, onPhotoClick } = props;
+  const { photos, likes, onChange, onPhotoClick, photoIndex } = props;
 
   const listOfPhotos = photos.map((item) => {
     return (
@@ -17,6 +17,7 @@ const PhotoList = (props) => {
         likes={likes}
         onChange={onChange}
         onClick={onPhotoClick}
+        photoIndex={photos.indexOf(item)}
       />
     );
   });

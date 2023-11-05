@@ -4,7 +4,6 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "../components/PhotoList";
 
 import photos from "mocks/photos";
-import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 
 const PhotoDetailsModal = ({ photo, onClose }) => {
   if (!photo) {
@@ -12,7 +11,8 @@ const PhotoDetailsModal = ({ photo, onClose }) => {
   }
 
   // replace photos[1] with selected photo later...
-  const similarPhotos = Object.values(photos[1].similar_photos);
+  const selectedPhoto = photos[photo.photoIndex];
+  const similarPhotos = Object.values(selectedPhoto.similar_photos);
 
   return (
     <div className="photo-details-modal">
@@ -22,7 +22,7 @@ const PhotoDetailsModal = ({ photo, onClose }) => {
       {/* modal content here */}
       <div className="photo-details-modal__images">
         <img
-          src={photos[1].urls.regular}
+          src={selectedPhoto.urls.full}
           className="photo-details-modal__image"
         />
         <p className="photo-details-modal__header">
