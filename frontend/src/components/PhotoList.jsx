@@ -2,6 +2,7 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
+// photos is an array of photo objects: [{},{},...]
 const PhotoList = (props) => {
   const { photos, likes, onChange, onPhotoClick } = props;
 
