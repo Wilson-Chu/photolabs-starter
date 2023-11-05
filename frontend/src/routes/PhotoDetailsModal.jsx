@@ -19,10 +19,28 @@ const PhotoDetailsModal = ({ photo, onClose, photos }) => {
       </button>
       {/* modal content here */}
       <div className="photo-details-modal__images">
-        <img
-          src={selectedPhoto.urls.full}
-          className="photo-details-modal__image"
-        />
+        <section className="photo-details-modal__author-style">
+          <img
+            src={selectedPhoto.urls.full}
+            className="photo-details-modal__image"
+          />
+          <div className="photo-details-modal__photographer-info">
+            <img
+              className="photo-list__user-profile"
+              src={photo.profile}
+              alt={`${selectedPhoto.user.name}'s profile`}
+            />
+            <div className="photo-list__user-info">
+              <p className="photo-list__user-info">
+                {selectedPhoto.user.name}{" "}
+              </p>
+              <p className="photo-list__user-info photo-list__user-location">
+                {selectedPhoto.location.city}, {selectedPhoto.location.country}
+              </p>
+            </div>
+          </div>
+        </section>
+        <hr className="photo-details-modal__top-bar" />
         <p className="photo-details-modal__header">
           <strong>Similar Photos</strong>
         </p>
