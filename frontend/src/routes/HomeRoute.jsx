@@ -1,6 +1,7 @@
 import React from "react";
 import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
+import photos from "../mocks/photos";
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
@@ -10,6 +11,7 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigationBar likes={likes} onChange={onChange} />
       <PhotoList
+        photos={photos}
         likes={likes}
         onChange={onChange}
         onPhotoClick={onPhotoClick}
