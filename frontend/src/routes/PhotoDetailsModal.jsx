@@ -3,9 +3,7 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "../components/PhotoList";
 
-import photos from "mocks/photos";
-
-const PhotoDetailsModal = ({ photo, onClose }) => {
+const PhotoDetailsModal = ({ photo, onClose, photos }) => {
   if (!photo) {
     return null;
   }

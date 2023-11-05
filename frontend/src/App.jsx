@@ -31,7 +31,7 @@ const App = () => {
         photoIndex={photoIndex}
       />
       {selectedPhoto && (
-        <PhotoDetailsModal photo={selectedPhoto} onClose={closeModal} />
+        <PhotoDetailsModal photo={selectedPhoto} onClose={closeModal} photos={photos}/>
       )}
     </div>
   );
