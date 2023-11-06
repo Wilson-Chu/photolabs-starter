@@ -3,11 +3,11 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "../components/PhotoList";
 
-const PhotoDetailsModal = ({ photo, onClose, photos }) => {
+const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
   if (!photo) {
     return null;
   }
-  
+
   const selectedPhoto = photos[photo.photoIndex];
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
 
@@ -44,7 +44,11 @@ const PhotoDetailsModal = ({ photo, onClose, photos }) => {
           <strong>Similar Photos</strong>
         </p>
         <section className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos} />
+          <PhotoList
+            photos={similarPhotos}
+            likes={likes}
+            onChange={onChange}
+          />
         </section>
       </div>
       {console.log(photo)} {/* Testing... */}

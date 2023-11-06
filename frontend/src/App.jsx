@@ -31,7 +31,13 @@ const App = () => {
         photoIndex={photoIndex}
       />
       {selectedPhoto && (
-        <PhotoDetailsModal photo={selectedPhoto} onClose={closeModal} photos={photos}/>
+        <PhotoDetailsModal
+          photo={selectedPhoto}
+          onClose={closeModal}
+          photos={photos}
+          likes={likes}
+          onChange={updateLikes}
+        />
       )}
     </div>
   );
