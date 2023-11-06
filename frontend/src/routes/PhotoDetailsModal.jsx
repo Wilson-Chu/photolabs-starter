@@ -7,8 +7,7 @@ const PhotoDetailsModal = ({ photo, onClose, photos }) => {
   if (!photo) {
     return null;
   }
-
-  // replace photos[1] with selected photo later...
+  
   const selectedPhoto = photos[photo.photoIndex];
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
 
@@ -26,15 +25,15 @@ const PhotoDetailsModal = ({ photo, onClose, photos }) => {
           />
           <div className="photo-details-modal__photographer-info">
             <img
-              className="photo-list__user-profile"
+              className="photo-details-modal__photographer-profile"
               src={photo.profile}
               alt={`${selectedPhoto.user.name}'s profile`}
             />
             <div className="photo-list__user-info">
-              <p className="photo-list__user-info">
+              <p className="photo-details-modal__photographer-info">
                 {selectedPhoto.user.name}{" "}
               </p>
-              <p className="photo-list__user-info photo-list__user-location">
+              <p className="photo-details-modal__photographer-info photo-details-modal__photographer-location">
                 {selectedPhoto.location.city}, {selectedPhoto.location.country}
               </p>
             </div>
