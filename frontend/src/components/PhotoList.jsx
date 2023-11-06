@@ -3,10 +3,8 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 // photos is an array of photo objects: [{},{},...]
-const PhotoList = (props) => {
-  const { photos, likes, onChange, onPhotoClick, photoIndex } = props;
-
-  const listOfPhotos = photos.map((item) => {
+const PhotoList = ({ photos, likes, onChange, onPhotoClick, photoIndex }) => {
+  const listOfPhotos = photos.map((item, index) => {
     return (
       <PhotoListItem
         key={item.id}
@@ -17,7 +15,7 @@ const PhotoList = (props) => {
         likes={likes}
         onChange={onChange}
         onClick={onPhotoClick}
-        photoIndex={photos.indexOf(item)}
+        photoIndex={index}
       />
     );
   });

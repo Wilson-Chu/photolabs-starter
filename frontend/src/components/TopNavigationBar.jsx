@@ -3,9 +3,7 @@ import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
 import "../styles/TopNavigationBar.scss";
 
-const TopNavigation = (props) => {
-  const { likes, onChange } = props;
-
+const TopNavigation = ({ likes, onChange }) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>

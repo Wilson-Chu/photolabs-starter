@@ -3,9 +3,7 @@ import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = (props) => {
-  const { photos, likes, onChange, onPhotoClick, photoIndex } = props;
-
+const HomeRoute = ({ photos, likes, onChange, onPhotoClick, photoIndex }) => {
   return (
     <div className="home-route">
       <TopNavigationBar likes={likes} onChange={onChange} />
@@ -14,7 +12,7 @@ const HomeRoute = (props) => {
         likes={likes}
         onChange={onChange}
         onPhotoClick={onPhotoClick}
-        photoIndex = {photoIndex}
+        photoIndex={photoIndex}
       />
     </div>
   );
