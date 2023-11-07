@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "../components/PhotoList";
+import PhotoFavButton from "../components/PhotoFavButton";
 
 const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
   if (!photo) {
@@ -19,6 +20,7 @@ const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
       {/* modal content here */}
       <div className="photo-details-modal__images">
         <section className="photo-details-modal__author-style">
+          <PhotoFavButton likes={likes} onChange={onChange} />
           <img
             src={selectedPhoto.urls.full}
             className="photo-details-modal__image"
@@ -44,11 +46,7 @@ const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
           <strong>Similar Photos</strong>
         </p>
         <section className="photo-details-modal__images">
-          <PhotoList
-            photos={similarPhotos}
-            likes={likes}
-            onChange={onChange}
-          />
+          <PhotoList photos={similarPhotos} likes={likes} onChange={onChange} />
         </section>
       </div>
       {console.log(photo)} {/* Testing... */}
