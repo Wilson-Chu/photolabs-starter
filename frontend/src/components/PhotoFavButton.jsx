@@ -3,9 +3,8 @@ import React, { useCallback, useState } from "react";
 import "../styles/PhotoFavButton.scss";
 import FavBadge from "./FavBadge";
 
-function PhotoFavButton(props) {
+function PhotoFavButton({ likes, onChange }) {
   const [like, setLike] = useState(false);
-  const { likes, onChange } = props;
 
   const toggleLike = () => {
     like ? onChange(likes, false) : onChange(likes, true);
