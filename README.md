@@ -7,6 +7,11 @@ PhotoLabs is a full-stack React project that showcases different pictures for di
 
 ## Demo
 
+!["PhotoLabs Home Page"](https://github.com/Wilson-Chu/photolabs-starter/blob/main/docs/photolabs_home.PNG?raw=true)
+
+!["PhotoLabs Nature Topic"](https://github.com/Wilson-Chu/photolabs-starter/blob/main/docs/photolabs_nature_topic.png?raw=true)
+
+!["PhotoLabs Nature Modal and Like"](https://github.com/Wilson-Chu/photolabs-starter/blob/main/docs/photolabs_nature_modal.png?raw=true)
 
 ### Built With:
 
