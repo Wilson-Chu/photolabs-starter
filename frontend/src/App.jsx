@@ -1,42 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import photos from "mocks/photos";
+import useApplicationData from "./hooks/useApplicationData"; // Import the custom hook
 
 const App = () => {
-  const [likes, setLikes] = useState(0);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [photoIndex, setPhotoIndex] = useState(null);
+  const {
+    state,
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
-  const updateLikes = (likes, likesExist) => {
-    likesExist ? setLikes(++likes) : setLikes(--likes);
-  };
-
-  const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
-  };
-
-  const closeModal = () => {
-    setSelectedPhoto(null);
-  };
+  const { likes, selectedPhoto } = state;
 
   return (
     <div className="App">
       <HomeRoute
         photos={photos}
         likes={likes}
-        onChange={updateLikes}
-        onPhotoClick={handlePhotoClick}
-        photoIndex={photoIndex}
+        onChange={updateToFavPhotoIds}
+        onPhotoClick={setPhotoSelected}
+        photoIndex={state.photoIndex}
       />
       {selectedPhoto && (
         <PhotoDetailsModal
           photo={selectedPhoto}
-          onClose={closeModal}
+          onClose={onClosePhotoDetailsModal}
           photos={photos}
           likes={likes}
-          onChange={updateLikes}
+          onChange={updateToFavPhotoIds}
         />
       )}
     </div>
