@@ -10,25 +10,27 @@ const App = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
+    filterByTopic,
   } = useApplicationData();
 
-  const { likes, selectedPhoto } = state;
+  const { likes, selectedPhoto, photoIndex, photoData, topicData } = state;
 
   return (
     <div className="App">
       <HomeRoute
-        photos={state.photoData}
-        topics={state.topicData}
+        photos={photoData}
+        topics={topicData}
         likes={likes}
         onChange={updateToFavPhotoIds}
         onPhotoClick={setPhotoSelected}
-        photoIndex={state.photoIndex}
+        photoIndex={photoIndex}
+        filterByTopic={filterByTopic}
       />
       {selectedPhoto && (
         <PhotoDetailsModal
           photo={selectedPhoto}
           onClose={onClosePhotoDetailsModal}
-          photos={state.photoData}
+          photos={photoData}
           likes={likes}
           onChange={updateToFavPhotoIds}
         />

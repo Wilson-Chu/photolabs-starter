@@ -6,6 +6,7 @@ export const ACTIONS = {
   CLOSE_MODAL: "CLOSE_MODAL",
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 
 const initialState = {
@@ -30,6 +31,8 @@ function reducer(state, action) {
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, photoData: action.payload };
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
@@ -38,17 +41,26 @@ function reducer(state, action) {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Retrieve complete photo list from DB
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
   }, []);
 
+  // Retrieve complete topic list from DB
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
+
+  // Displays photos only relating to specific topic that was clicked in TopicList.jsx
+  const filterByTopic = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }));
+  };
 
   const updateToFavPhotoIds = (likes, likesExist) => {
     const newLikes = likesExist ? likes + 1 : likes - 1;
@@ -68,6 +80,7 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
+    filterByTopic
   };
 };
 
