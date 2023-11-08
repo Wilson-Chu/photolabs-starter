@@ -1,27 +1,38 @@
-import { useState } from "react";
+import { useReducer } from "react";
+
+const initialState = {
+  likes: 0,
+  selectedPhoto: null,
+  photoIndex: null,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "UPDATE_LIKES":
+      return { ...state, likes: action.likes };
+    case "SELECT_PHOTO":
+      return { ...state, selectedPhoto: action.photo };
+    case "CLOSE_MODAL":
+      return { ...state, selectedPhoto: null };
+    default:
+      return state;
+  }
+}
 
 const useApplicationData = () => {
-  // Initialize the state variables
-  const [state, setState] = useState({
-    likes: 0,
-    selectedPhoto: null,
-    photoIndex: null,
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Action to update the favorite photos
   const updateToFavPhotoIds = (likes, likesExist) => {
     const newLikes = likesExist ? likes + 1 : likes - 1;
-    setState((prev) => ({ ...prev, likes: newLikes }));
+    dispatch({ type: "UPDATE_LIKES", likes: newLikes });
   };
 
-  // Action to set the selected photo
   const setPhotoSelected = (photo) => {
-    setState((prev) => ({ ...prev, selectedPhoto: photo }));
+    dispatch({ type: "SELECT_PHOTO", photo });
   };
 
-  // Action to close the photo details modal
   const onClosePhotoDetailsModal = () => {
-    setState((prev) => ({ ...prev, selectedPhoto: null }));
+    dispatch({ type: "CLOSE_MODAL" });
   };
 
   return {
