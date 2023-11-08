@@ -3,7 +3,8 @@ import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import photos from "mocks/photos";
-import useApplicationData from "./hooks/useApplicationData"; // Import the custom hook
+import topics from "mocks/topics";
+import useApplicationData from "./hooks/useApplicationData";
 
 const App = () => {
   const {
@@ -19,6 +20,7 @@ const App = () => {
     <div className="App">
       <HomeRoute
         photos={photos}
+        topics={topics}
         likes={likes}
         onChange={updateToFavPhotoIds}
         onPhotoClick={setPhotoSelected}
