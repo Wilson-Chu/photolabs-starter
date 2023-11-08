@@ -1,5 +1,11 @@
 import { useReducer } from "react";
 
+export const ACTIONS = {
+  UPDATE_LIKES: "UPDATE_LIKES",
+  SELECT_PHOTO: "SELECT_PHOTO",
+  CLOSE_MODAL: "CLOSE_MODAL",
+};
+
 const initialState = {
   likes: 0,
   selectedPhoto: null,
@@ -8,14 +14,16 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "UPDATE_LIKES":
-      return { ...state, likes: action.likes };
-    case "SELECT_PHOTO":
-      return { ...state, selectedPhoto: action.photo };
-    case "CLOSE_MODAL":
+    case ACTIONS.UPDATE_LIKES:
+      const newLikes = action.likes;
+      return { ...state, likes: newLikes };
+    case ACTIONS.SELECT_PHOTO:
+      const selectedPhoto = action.photo;
+      return { ...state, selectedPhoto };
+    case ACTIONS.CLOSE_MODAL:
       return { ...state, selectedPhoto: null };
     default:
-      return state;
+      throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
 }
 
@@ -24,15 +32,15 @@ const useApplicationData = () => {
 
   const updateToFavPhotoIds = (likes, likesExist) => {
     const newLikes = likesExist ? likes + 1 : likes - 1;
-    dispatch({ type: "UPDATE_LIKES", likes: newLikes });
+    dispatch({ type: ACTIONS.UPDATE_LIKES, likes: newLikes });
   };
 
   const setPhotoSelected = (photo) => {
-    dispatch({ type: "SELECT_PHOTO", photo });
+    dispatch({ type: ACTIONS.SELECT_PHOTO, photo });
   };
 
   const onClosePhotoDetailsModal = () => {
-    dispatch({ type: "CLOSE_MODAL" });
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
   return {
@@ -44,3 +52,4 @@ const useApplicationData = () => {
 };
 
 export default useApplicationData;
+
