@@ -49,7 +49,6 @@ const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
           <PhotoList photos={similarPhotos} likes={likes} onChange={onChange} />
         </section>
       </div>
-      {console.log(photo)} {/* Testing... */}
     </div>
   );
 };

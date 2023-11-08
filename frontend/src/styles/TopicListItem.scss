@@ -14,4 +14,10 @@
     color: #111;
     cursor: pointer;
   }
+
+  // To be used to highlight selected topic later
+  .selected {
+    text-decoration: overline;
+    color: #111;
+  }
 }

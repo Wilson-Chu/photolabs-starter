@@ -45,21 +45,30 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((error) => {
+        console.error("Error fetching photos:", error);
+      });
   }, []);
 
   // Retrieve complete topic list from DB
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch((error) => {
+        console.error("Error fetching topics:", error);
+      });
   }, []);
 
   // Displays photos only relating to specific topic that was clicked in TopicList.jsx
   const filterByTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }));
+      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }))
+      .catch((error) => {
+        console.error(`Error fetching photos for topicId: ${topicId}:`, error);
+      });
   };
 
   const updateToFavPhotoIds = (likes, likesExist) => {
