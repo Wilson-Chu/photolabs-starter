@@ -5,6 +5,7 @@ export const ACTIONS = {
   SELECT_PHOTO: "SELECT_PHOTO",
   CLOSE_MODAL: "CLOSE_MODAL",
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 };
 
 const initialState = {
@@ -27,6 +28,8 @@ function reducer(state, action) {
       return { ...state, selectedPhoto: null };
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
@@ -39,6 +42,12 @@ const useApplicationData = () => {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
 
   const updateToFavPhotoIds = (likes, likesExist) => {
