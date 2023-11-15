@@ -4,7 +4,14 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "../components/PhotoList";
 import PhotoFavButton from "../components/PhotoFavButton";
 
-const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
+const PhotoDetailsModal = ({
+  photo,
+  onClose,
+  photos,
+  likes,
+  likedPhotos,
+  onChange,
+}) => {
   if (!photo) {
     return null;
   }
@@ -20,10 +27,16 @@ const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
       {/* modal content here */}
       <div className="photo-details-modal__images">
         <section className="photo-details-modal__author-style">
-          <PhotoFavButton likes={likes} onChange={onChange} />
+          <PhotoFavButton
+            likes={likes}
+            onChange={onChange}
+            likedPhotos={likedPhotos}
+            photoId={selectedPhoto.id}
+          />
           <img
             src={selectedPhoto.urls.full}
             className="photo-details-modal__image"
+            alt={`${selectedPhoto.user.name}'s full size photo`}
           />
           <div className="photo-details-modal__photographer-info">
             <img
@@ -46,7 +59,7 @@ const PhotoDetailsModal = ({ photo, onClose, photos, likes, onChange }) => {
           <strong>Similar Photos</strong>
         </p>
         <section className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos} likes={likes} onChange={onChange} />
+          <PhotoList photos={similarPhotos} likes={likes} onChange={onChange} likedPhotos={likedPhotos}/>
         </section>
       </div>
     </div>
