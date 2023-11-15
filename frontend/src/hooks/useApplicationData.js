@@ -10,10 +10,9 @@ export const ACTIONS = {
 };
 
 const initialState = {
-  likes: 0,
   selectedPhoto: null,
   photoIndex: null,
-  likedPhotos: [], // array of photoIds of liked photos, spans entire program
+  likedPhotos: [],
   photoData: [],
   topicData: []
 };
@@ -21,22 +20,19 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.UPDATE_LIKES:
-      // const newLikes = action.likes;
-      // return { ...state, likes: newLikes };
-
       const { photoId } = action.payload;
       const isLiked = state.likedPhotos.includes(photoId);
-      // when the photo hasn't been marked as fav yet
+      // If a specific photo has not been liked yet, toggle to like
       if (!isLiked) {
         return {
           ...state,
           likedPhotos: [...state.likedPhotos, photoId]
         };
       } else {
-        // when the photo has already been marked as fav --> remove it from the fav list
+        // Toggles from liked to not liked & removes photoId from array
         return {
           ...state,
-          likedPhotos: state.likedPhotos.filter(likedPhotosID => likedPhotosID !== photoId)
+          likedPhotos: state.likedPhotos.filter(likedPhotoId => likedPhotoId !== photoId)
         };
       };
     case ACTIONS.SELECT_PHOTO:
@@ -87,11 +83,6 @@ const useApplicationData = () => {
         console.error(`Error fetching photos for topicId: ${topicId}:`, error);
       });
   };
-
-  // const updateToFavPhotoIds = (likes, likesExist) => {
-  //   const newLikes = likesExist ? likes + 1 : likes - 1;
-  //   dispatch({ type: ACTIONS.UPDATE_LIKES, likes: newLikes });
-  // };
 
   const updateToFavPhotoIds = (photoId) => {
     dispatch({ type: ACTIONS.UPDATE_LIKES, payload: { photoId } });
