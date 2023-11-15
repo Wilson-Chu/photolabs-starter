@@ -10,7 +10,7 @@ const PhotoList = ({ photos, likes, onChange, onPhotoClick, photoIndex }) => {
         key={item.id}
         location={item.location}
         imageSource={item.urls.regular}
-        name={item.user.name}
+        username={item.user.name}
         profile={item.user.profile}
         likes={likes}
         onChange={onChange}
