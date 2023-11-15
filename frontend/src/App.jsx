@@ -13,7 +13,7 @@ const App = () => {
     filterByTopic,
   } = useApplicationData();
 
-  const { likes, selectedPhoto, photoIndex, photoData, topicData } = state;
+  const { likes, selectedPhoto, photoIndex, likedPhotos, photoData, topicData } = state;
 
   return (
     <div className="App">
@@ -21,6 +21,7 @@ const App = () => {
         photos={photoData}
         topics={topicData}
         likes={likes}
+        likedPhotos={likedPhotos}
         onChange={updateToFavPhotoIds}
         onPhotoClick={setPhotoSelected}
         photoIndex={photoIndex}
@@ -32,6 +33,7 @@ const App = () => {
           onClose={onClosePhotoDetailsModal}
           photos={photoData}
           likes={likes}
+          likedPhotos={likedPhotos}
           onChange={updateToFavPhotoIds}
         />
       )}

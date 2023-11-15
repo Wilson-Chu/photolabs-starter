@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 
 import "../styles/PhotoFavButton.scss";
-import FavBadge from "./FavBadge";
+import FavIcon from "./FavIcon";
 
-function PhotoFavButton({ likes, onChange }) {
+function PhotoFavButton({ likes, onChange, likedPhotos, photoId }) {
   const [like, setLike] = useState(false);
 
   const toggleLike = () => {
@@ -13,8 +13,11 @@ function PhotoFavButton({ likes, onChange }) {
 
   return (
     <div className="photo-list__fav-icon">
-      <div className="photo-list__fav-icon-svg" onClick={toggleLike}>
-        <FavBadge isFavPhotoExist={like} />
+      <div
+        className="photo-list__fav-icon-svg"
+        onClick={() => onChange(photoId)}
+      >
+        <FavIcon selected={likedPhotos.includes(photoId)} />
       </div>
     </div>
   );

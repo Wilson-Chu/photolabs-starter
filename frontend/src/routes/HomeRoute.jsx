@@ -8,6 +8,7 @@ const HomeRoute = ({
   topics,
   likes,
   onChange,
+  likedPhotos,
   onPhotoClick,
   photoIndex,
   filterByTopic,
@@ -15,14 +16,14 @@ const HomeRoute = ({
   return (
     <div className="home-route">
       <TopNavigationBar
-        likes={likes}
-        onChange={onChange}
+        isFavPhotoExist={likedPhotos.length}
         topics={topics}
         filterByTopic={filterByTopic}
       />
       <PhotoList
         photos={photos}
         likes={likes}
+        likedPhotos={likedPhotos}
         onChange={onChange}
         onPhotoClick={onPhotoClick}
         photoIndex={photoIndex}
