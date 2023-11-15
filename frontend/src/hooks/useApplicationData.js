@@ -53,23 +53,17 @@ function reducer(state, action) {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Retrieve complete photo list from DB
   useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+    Promise.all([
+      fetch("/api/photos").then((response) => response.json()),
+      fetch("/api/topics").then((response) => response.json())
+    ])
+      .then(([photoData, topicData]) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData });
+      })
       .catch((error) => {
-        console.error("Error fetching photos:", error);
-      });
-  }, []);
-
-  // Retrieve complete topic list from DB
-  useEffect(() => {
-    fetch("/api/topics")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
-      .catch((error) => {
-        console.error("Error fetching topics:", error);
+        console.error("Error fetching photos or topics:", error);
       });
   }, []);
 
