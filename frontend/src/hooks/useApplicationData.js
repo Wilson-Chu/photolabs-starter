@@ -13,6 +13,7 @@ const initialState = {
   likes: 0,
   selectedPhoto: null,
   photoIndex: null,
+  likedPhotos: [], // array of photoIds of liked photos, spans entire program
   photoData: [],
   topicData: []
 };
@@ -20,8 +21,23 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.UPDATE_LIKES:
-      const newLikes = action.likes;
-      return { ...state, likes: newLikes };
+      // const newLikes = action.likes;
+      // return { ...state, likes: newLikes };
+      const {photoId} = action.payload;
+      const isLiked = state.likedPhotos.includes(photoId);
+      // when the photo hasn't been marked as fav yet
+      if(!isLiked) {
+        return {
+          ...state,
+          likedPhotos:[...state.likedPhotos, photoId]
+        }
+      } else {
+        // when the photo has already been marked as fav --> remove it from the fav list
+        return {
+          ...state,
+          likedPhotos: state.likedPhotos.filter(likedPhotosID => likedPhotosID !== photoId)
+        }
+      };
     case ACTIONS.SELECT_PHOTO:
       const selectedPhoto = action.photo;
       return { ...state, selectedPhoto };
