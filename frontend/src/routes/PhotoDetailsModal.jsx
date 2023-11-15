@@ -8,7 +8,6 @@ const PhotoDetailsModal = ({
   photo,
   onClose,
   photos,
-  likes,
   likedPhotos,
   onChange,
 }) => {
@@ -28,7 +27,6 @@ const PhotoDetailsModal = ({
       <div className="photo-details-modal__images">
         <section className="photo-details-modal__author-style">
           <PhotoFavButton
-            likes={likes}
             onChange={onChange}
             likedPhotos={likedPhotos}
             photoId={selectedPhoto.id}
@@ -59,7 +57,11 @@ const PhotoDetailsModal = ({
           <strong>Similar Photos</strong>
         </p>
         <section className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos} likes={likes} onChange={onChange} likedPhotos={likedPhotos}/>
+          <PhotoList
+            photos={similarPhotos}
+            onChange={onChange}
+            likedPhotos={likedPhotos}
+          />
         </section>
       </div>
     </div>

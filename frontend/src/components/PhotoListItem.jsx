@@ -9,7 +9,6 @@ const PhotoListItem = (props) => {
     id,
     location,
     profile,
-    likes,
     likedPhotos,
     onChange,
     onClick,
@@ -26,7 +25,6 @@ const PhotoListItem = (props) => {
   return (
     <article className="photo-list__item">
       <PhotoFavButton
-        likes={likes}
         photoId={photoId}
         onChange={onChange}
         likedPhotos={likedPhotos}

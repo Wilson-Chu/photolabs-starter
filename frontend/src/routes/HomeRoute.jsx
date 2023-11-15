@@ -6,7 +6,6 @@ import "../styles/HomeRoute.scss";
 const HomeRoute = ({
   photos,
   topics,
-  likes,
   onChange,
   likedPhotos,
   onPhotoClick,
@@ -22,7 +21,6 @@ const HomeRoute = ({
       />
       <PhotoList
         photos={photos}
-        likes={likes}
         likedPhotos={likedPhotos}
         onChange={onChange}
         onPhotoClick={onPhotoClick}
