@@ -15,7 +15,7 @@ const PhotoDetailsModal = ({
     return null;
   }
 
-  const selectedPhoto = photos[photo.photoIndex];
+  const selectedPhoto = photos[photo.photoIndex]; // photoIndex imported from PhotoList
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
 
   return (

@@ -6,14 +6,12 @@ const PhotoListItem = (props) => {
   const {
     username,
     imageSource,
-    id,
     location,
     profile,
     likedPhotos,
     onChange,
     onClick,
     photoId,
-    photoIndex,
   } = props;
 
   const handleItemClick = () => {

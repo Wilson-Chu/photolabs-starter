@@ -13,8 +13,7 @@ const App = () => {
     filterByTopic,
   } = useApplicationData();
 
-  const { selectedPhoto, photoIndex, likedPhotos, photoData, topicData } =
-    state;
+  const { selectedPhoto, likedPhotos, photoData, topicData } = state;
 
   return (
     <div className="App">
@@ -24,7 +23,6 @@ const App = () => {
         likedPhotos={likedPhotos}
         onChange={updateToFavPhotoIds}
         onPhotoClick={setPhotoSelected}
-        photoIndex={photoIndex}
         filterByTopic={filterByTopic}
       />
       {selectedPhoto && (

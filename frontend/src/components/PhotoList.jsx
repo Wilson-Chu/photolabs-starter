@@ -3,13 +3,7 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 // photos is an array of photo objects: [{},{},...]
-const PhotoList = ({
-  photos,
-  likedPhotos,
-  onChange,
-  onPhotoClick,
-  photoIndex,
-}) => {
+const PhotoList = ({ photos, likedPhotos, onChange, onPhotoClick }) => {
   const listOfPhotos = photos.map((item, index) => {
     return (
       <PhotoListItem
@@ -22,7 +16,7 @@ const PhotoList = ({
         likedPhotos={likedPhotos}
         onChange={onChange}
         onClick={onPhotoClick}
-        photoIndex={index}
+        photoIndex={index} // Used in PhotoDetailsModal.jsx
       />
     );
   });

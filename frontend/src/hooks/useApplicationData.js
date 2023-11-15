@@ -11,7 +11,6 @@ export const ACTIONS = {
 
 const initialState = {
   selectedPhoto: null,
-  photoIndex: null,
   likedPhotos: [],
   photoData: [],
   topicData: []

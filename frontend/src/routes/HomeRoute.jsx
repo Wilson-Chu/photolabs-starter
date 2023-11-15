@@ -9,7 +9,6 @@ const HomeRoute = ({
   onChange,
   likedPhotos,
   onPhotoClick,
-  photoIndex,
   filterByTopic,
 }) => {
   return (
@@ -24,7 +23,6 @@ const HomeRoute = ({
         likedPhotos={likedPhotos}
         onChange={onChange}
         onPhotoClick={onPhotoClick}
-        photoIndex={photoIndex}
       />
     </div>
   );
