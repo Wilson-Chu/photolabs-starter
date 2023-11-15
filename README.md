@@ -55,5 +55,4 @@ npm start
 
 ## Future Improvements
 
-- Favourites/Likes for each photo not persisting for the same photo across the entire application yet, but they are being recorded in the NavBar notification
 - Selected topic indicator not implemented yet: after a user clicks on a topic in NavBar, the overhead line should persist
